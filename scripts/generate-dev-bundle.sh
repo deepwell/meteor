@@ -149,6 +149,8 @@ cd $OPENSSL
 if [ "$UNAME" == "Linux" ]; then
     ./config --prefix="$DIR/build/openssl-out" no-shared
 else
+    # This configuration line is taken from Homebrew formula:
+    # https://github.com/mxcl/homebrew/blob/master/Library/Formula/openssl.rb
     ./Configure no-shared zlib-dynamic --prefix="$DIR/build/openssl-out" darwin64-x86_64-cc enable-ec_nistp_64_gcc_128
 fi
 make install
@@ -159,6 +161,8 @@ make install
 cd "$DIR/build"
 MONGO_VERSION="2.4.4"
 
+# We use Meteor fork since we added some changes to the building script.
+# Our patches allow us to link most of the libraries statically.
 git clone git://github.com/meteor/mongo.git
 cd mongo
 git checkout ssl-r$MONGO_VERSION

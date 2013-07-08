@@ -749,7 +749,7 @@ Fiber(function () {
             .alias('url', 'U')
             .describe('url', 'return a Mongo database URL')
             .usage(
-              "Usage: meteor mongo [--url] [site] [--ssl]\n" +
+              "Usage: meteor mongo [--url] [site]\n" +
                 "\n" +
                 "Opens a Mongo shell to view or manipulate collections.\n" +
                 "\n" +
@@ -763,7 +763,7 @@ Fiber(function () {
                 "\n" +
                 "Instead of opening a shell, specifying --url (-U) will return a URL\n" +
                 "suitable for an external program to connect to the database.  For remote\n" +
-                "databases on deployed applications, the URL is valid for one minute.\n";
+                "databases on deployed applications, the URL is valid for one minute.\n"
             );
 
       if (argv.help) {

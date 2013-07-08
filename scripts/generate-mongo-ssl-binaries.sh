@@ -1,5 +1,5 @@
 #!/bin/bash
-# optional parameter: build folder
+# optional argument: build directory
 
 set -e
 set -u
@@ -20,8 +20,7 @@ if [ "$UNAME" == "Linux" ] ; then
         strip --remove-section=.comment --remove-section=.note $1
     }
 else
-    echo "I can't build ubuntu package on non linux machine"
-    echo "Were you even serious?"
+    echo "This script is meant to be run on linux boxes."
     exit 1
 fi
 
@@ -31,6 +30,8 @@ PLATFORM="${UNAME}_${ARCH}"
 cd `dirname $0`/..
 TARGET_DIR=`pwd`
 
+# If optional argument, build directory, is passed, build there.
+# Otherwise build in a temporary directory.
 if [ $# -eq 0 ]; then
     DIR=`mktemp -d -t generate-dev-bundle-XXXXXXXX`
 else

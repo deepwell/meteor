@@ -245,7 +245,7 @@ var run_mongo_shell = function (url) {
   var mongo_path = path.join(files.get_dev_bundle(), 'mongodb', 'bin', 'mongo');
   var mongo_url = require('url').parse(url);
   var auth = mongo_url.auth && mongo_url.auth.split(':');
-  var ssl = !!require('querystring').parse(mongo_url.query).ssl;
+  var ssl = require('querystring').parse(mongo_url.query).ssl === "true";
 
   var args = [];
   if (ssl) args.push('--ssl');
